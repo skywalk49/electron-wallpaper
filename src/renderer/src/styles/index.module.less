@@ -1,0 +1,48 @@
+.box {
+    display: flex;
+}
+
+.nav {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &_item {
+        width: 200px;
+        height: 50px;
+        background-color: #ffffff;
+        font-size: 14px;
+        color: #8c8c8c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #1890ff;
+            color: #ffffff;
+        }
+
+        &_active {
+            background-color: #1890ff;
+            color: #ffffff;
+        }
+    }
+}
+
+.photo {
+    padding: 10px;
+    flex: 1;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &_box {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &_item {
+        margin: 2px;
+    }
+}
