@@ -5,6 +5,7 @@ import { Image, Card } from 'antd'
 import { DownloadOutlined } from '@ant-design/icons'
 import { ListFooter } from '@/components'
 import download from "downloadjs"
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
 const Index = () => {
     const [options, setOptions] = useState([])
@@ -72,23 +73,25 @@ const Index = () => {
                 })}
             </ul>
             <div className={css.photo} ref={photoRef}>
-                <div className={css.photo_box}>
-                    <Image.PreviewGroup>
-                        {
-                            images.map((item) => {
-                                return (
-                                    <div className={css.photo_item} key={item.id}>
-                                        <Card hoverable style={{ width: 270 }}
-                                            cover={<Image alt="example" src={item.url} />}
-                                            actions={[<DownloadOutlined onClick={() => download(item.url)} />]}>
-                                            <Meta title={item.utag} />
-                                        </Card>
-                                    </div>
-                                )
-                            })
-                        }
-                    </Image.PreviewGroup>
-                </div>
+                <Image.PreviewGroup>
+                    <ResponsiveMasonry>
+                        <Masonry gutter="10px">
+                            {
+                                images.map((item) => {
+                                    return (
+                                        <div key={item.id}>
+                                            <Card hoverable style={{ width: 270 }}
+                                                cover={<Image alt="example" src={item.url} />}
+                                                actions={[<DownloadOutlined onClick={() => download(item.url)} />]}>
+                                                <Meta title={item.utag} />
+                                            </Card>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </Masonry>
+                    </ResponsiveMasonry>
+                </Image.PreviewGroup>
                 <ListFooter loading={loading} finish={finish} />
             </div>
         </div>
