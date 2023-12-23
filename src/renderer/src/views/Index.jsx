@@ -74,6 +74,7 @@ const Index = () => {
             <div className={css.photo} ref={photoRef}>
                 <div className={css.photo_box}>
                     <Image.PreviewGroup>
+
                         {
                             images.map((item) => {
                                 return (
